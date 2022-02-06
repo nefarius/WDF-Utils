@@ -11,7 +11,7 @@
     </ClCompile>
     <Link>
       <AdditionalDependencies Condition="'$(DriverType)'=='KMDF'">..\..\DMF\$(Configuration)\$(PlatformName)\lib\DmfK\DmfK.lib;%(AdditionalDependencies);</AdditionalDependencies>
-	  <AdditionalDependencies Condition="'$(DriverType)'!='KMDF'">..\..\DMF\$(Configuration)\$(PlatformName)\lib\DmfU\DmfU.lib;%(AdditionalDependencies);</AdditionalDependencies>
+      <AdditionalDependencies Condition="'$(DriverType)'!='KMDF'">..\..\DMF\$(Configuration)\$(PlatformName)\lib\DmfU\DmfU.lib;%(AdditionalDependencies);</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup />
