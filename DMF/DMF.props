@@ -4,14 +4,17 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <_PropertySheetDisplayName>Driver Module Framework</_PropertySheetDisplayName>
+    <DmfRootPath Condition="'$(DmfRootPath)' == ''">
+      ..\..\DMF
+    </DmfRootPath>
   </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
-      <AdditionalIncludeDirectories>..\..\DMF\DMF\Modules.Library;..\..\DMF\DMF\Framework;$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(DmfRootPath)\DMF\Modules.Library;$(DmfRootPath)\DMF\Framework;$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalDependencies Condition="'$(DriverType)'=='KMDF'">..\..\DMF\$(Configuration)\$(PlatformName)\lib\DmfK\DmfK.lib;%(AdditionalDependencies);</AdditionalDependencies>
-      <AdditionalDependencies Condition="'$(DriverType)'!='KMDF'">..\..\DMF\$(Configuration)\$(PlatformName)\lib\DmfU\DmfU.lib;%(AdditionalDependencies);</AdditionalDependencies>
+      <AdditionalDependencies Condition="'$(DriverType)'=='KMDF'">$(DmfRootPath)\$(Configuration)\$(PlatformName)\lib\DmfK\DmfK.lib;%(AdditionalDependencies);</AdditionalDependencies>
+      <AdditionalDependencies Condition="'$(DriverType)'!='KMDF'">$(DmfRootPath)\$(Configuration)\$(PlatformName)\lib\DmfU\DmfU.lib;%(AdditionalDependencies);</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup />

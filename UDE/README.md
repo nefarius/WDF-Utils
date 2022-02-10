@@ -10,4 +10,6 @@ To include and link against [UDE](https://docs.microsoft.com/en-us/windows-hardw
   </ImportGroup>
 ```
 
+**Important:** if a `PropertySheets` group already exists, append the Import-Node(s) to that to avoid linker issues!
+
 Drop the provided `UDE.props` into the project directory and all include and linker settings will be available. Works for `KMDF` only.
