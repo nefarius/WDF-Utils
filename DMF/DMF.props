@@ -4,9 +4,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <_PropertySheetDisplayName>Driver Module Framework</_PropertySheetDisplayName>
-    <DmfRootPath Condition="'$(DmfRootPath)' == ''">
-      ..\..\DMF
-    </DmfRootPath>
+	<!-- By default, look for DMF in parent root directory, otherwise use environment variable value -->
+    <DmfRootPath Condition="'$(DmfRootPath)' == ''">$(SolutionDir)..\DMF</DmfRootPath>
   </PropertyGroup>
   <ItemDefinitionGroup>
     <ClCompile>
