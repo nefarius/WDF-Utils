@@ -12,7 +12,8 @@
       <AdditionalIncludeDirectories>$(BffRootPath)\bff;$(IntDir);%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalDependencies Condition="'$(DriverType)'=='KMDF'">$(BffRootPath)\$(PlatformName)\$(Configuration)\bff.lib;%(AdditionalDependencies);</AdditionalDependencies>
+      <AdditionalDependencies Condition="'$(DriverType)'=='KMDF' and '$(PlatformName)'=='x64'">$(BffRootPath)\$(PlatformName)\$(Configuration)\bff.lib;%(AdditionalDependencies);</AdditionalDependencies>
+	  <AdditionalDependencies Condition="'$(DriverType)'=='KMDF' and '$(PlatformName)'=='Win32'">$(BffRootPath)\$(Configuration)\bff.lib;%(AdditionalDependencies);</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup />
