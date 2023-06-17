@@ -131,7 +131,7 @@ FindDriverBaseAddress(
     moduleInfo = (PSYSTEM_MODULE_INFORMATION)ExAllocatePoolWithTag(
         NonPagedPool,
         bufferSize,
-        BTHPS_POOL_TAG
+        'looP'
     );
 #pragma warning(default:4996)
 
