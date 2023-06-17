@@ -82,7 +82,7 @@ _Success_(return == STATUS_SUCCESS)
 _Must_inspect_result_
 _IRQL_requires_max_(PASSIVE_LEVEL)
 NTSTATUS
-FundExportedFunctionAddress(
+FindExportedFunctionAddress(
     _In_ PVOID ModuleBase,
     _In_ STRING FunctionName,
     _Inout_ PVOID* FunctionAddress
@@ -183,7 +183,7 @@ _Success_(return == STATUS_SUCCESS)
 _Must_inspect_result_
 _IRQL_requires_max_(PASSIVE_LEVEL)
 NTSTATUS
-FundExportedFunctionAddress(
+FindExportedFunctionAddress(
     _In_ PVOID ModuleBase,
     _In_ STRING FunctionName,
     _Inout_ PVOID* FunctionAddress
@@ -259,7 +259,7 @@ PVOID driverBaseAddress = NULL, functionAddress = NULL;
 
 if (NT_SUCCESS(FindDriverBaseAddress(targetModuleName, &driverBaseAddress)))
 {
-    if (NT_SUCCESS(FundExportedFunctionAddress(driverBaseAddress, functionName, &functionAddress)))
+    if (NT_SUCCESS(FindExportedFunctionAddress(driverBaseAddress, functionName, &functionAddress)))
     {
         // Found imp_WppRecorderReplay, you can now safely call "functionAddress"
     }
