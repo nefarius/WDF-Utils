@@ -250,6 +250,16 @@ FindExportedFunctionAddress(
 ## Usage example
 
 ```c
+// prototype definition of function we wanna call dynamically
+typedef VOID(NTAPI* t_WppRecorderReplay)(
+    _In_ PVOID WppCb,
+    _In_ TRACEHANDLE WppTraceHandle,
+    _In_ ULONG EnableFlags,
+    _In_ UCHAR EnableLevel
+    );
+
+static t_WppRecorderReplay G_WppRecorderReplay = NULL;
+
 // full path to module of interest (CAUTION: must be loaded!)
 const STRING targetModuleName = RTL_CONSTANT_STRING("\\SystemRoot\\System32\\Drivers\\WppRecorder.sys");
 // exported function name
@@ -261,7 +271,10 @@ if (NT_SUCCESS(FindDriverBaseAddress(targetModuleName, &driverBaseAddress)))
 {
     if (NT_SUCCESS(FindExportedFunctionAddress(driverBaseAddress, functionName, &functionAddress)))
     {
-        // Found imp_WppRecorderReplay, you can now safely call "functionAddress"
+        // Found imp_WppRecorderReplay, you can now safely cast and call it
+        G_WppRecorderReplay = (t_WppRecorderReplay)functionAddress;
+
+        G_WppRecorderReplay(...);
     }
     else
     {
