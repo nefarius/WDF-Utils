@@ -2,6 +2,8 @@
 
 For dynamically calling functions, [`MmGetSystemRoutineAddress`](https://learn.microsoft.com/en-us/windows-hardware/drivers/ddi/wdm/nf-wdm-mmgetsystemroutineaddress) will only work for exports from `NtosKrnl.exe`, but what if you wish to get a pointer to a function of an export driver (a.k.a. kernel DLL)? The following snippet has been tested on Windows 10 version 1507 and upwards.
 
+**WARNING:** in contrast to `LoadLibrary`s behaviour calling `FindDriverBaseAddress` will **not** load the desired module, if not found! I might add another helper function to achieve this in the future, if need arises.
+
 ## Header
 
 ```c
