@@ -75,7 +75,7 @@ _IRQL_requires_max_(PASSIVE_LEVEL)
 NTSTATUS
 FindDriverBaseAddress(
     _In_ STRING ModuleName,
-    _Inout_ PVOID* ModuleBase
+    _Inout_opt_ PVOID* ModuleBase
 );
 
 _Success_(return == STATUS_SUCCESS)
@@ -85,7 +85,7 @@ NTSTATUS
 FindExportedFunctionAddress(
     _In_ PVOID ModuleBase,
     _In_ STRING FunctionName,
-    _Inout_ PVOID* FunctionAddress
+    _Inout_opt_ PVOID* FunctionAddress
 );
 ```
 
@@ -105,7 +105,7 @@ _IRQL_requires_max_(PASSIVE_LEVEL)
 NTSTATUS
 FindDriverBaseAddress(
     _In_ STRING ModuleName,
-    _Inout_ PVOID* ModuleBase
+    _Inout_opt_ PVOID* ModuleBase
 )
 {
     ULONG bufferSize = 0;
@@ -186,7 +186,7 @@ NTSTATUS
 FindExportedFunctionAddress(
     _In_ PVOID ModuleBase,
     _In_ STRING FunctionName,
-    _Inout_ PVOID* FunctionAddress
+    _Inout_opt_ PVOID* FunctionAddress
 )
 {
     NTSTATUS status = STATUS_NOT_FOUND;
